@@ -1,0 +1,17 @@
+version: '2' 
+
+services:
+  express: # node.js express restApi application
+    build: . # specify the directory of the Dockerfile
+    ports:
+      - "3000:3000" #specify ports forewarding
+    links:
+      - mongod # link this service to the database service
+    tty: true
+
+
+  mongod: # mongod db (document-based db)
+    image: mongo # specify image to build container from
+
+    ports:
+      - "27017:27017" # specify port forewarding
